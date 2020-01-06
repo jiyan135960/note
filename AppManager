@@ -1,4 +1,3 @@
-
     private fun getAllPackages() = mainScope.launch {
         val packages = packageManager.getInstalledPackages(0)
         appCount.value = 0
@@ -22,7 +21,7 @@
                     isSystem = false
                     Log.d("zyx", "isSystem:$isSystem")
                 }
-                if (!isSystem) {
+                if (!isSystem && packageName != this@GarbageActivity.packageName) {
                     val lastCount = appCount.value ?: 0
                     withContext(Dispatchers.Main) {
                         appCount.value = lastCount + 1
@@ -75,4 +74,43 @@ class GarbageAdapter(layout: Int, dataList: MutableList<ProccessInfo>) :
             }
     }
 
+}
+
+class ApkInstallerListener(
+    val context: Activity,
+    val installerAction: (packageName: String, action: InstallerType) -> Unit
+) {
+
+    val installListener = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            val packageName = intent?.data?.schemeSpecificPart ?: ""
+            val action = intent?.action ?: ""
+            when (action) {
+                Intent.ACTION_PACKAGE_ADDED -> installerAction.invoke(packageName,InstallerType.ADD)
+                Intent.ACTION_PACKAGE_REMOVED -> installerAction.invoke(packageName,InstallerType.REMOVE)
+                Intent.ACTION_PACKAGE_REPLACED -> installerAction.invoke(packageName,InstallerType.REPLACED)
+                Intent.ACTION_PACKAGE_CHANGED -> installerAction.invoke(packageName,InstallerType.CHANGED)
+                Intent.ACTION_PACKAGE_RESTARTED -> installerAction.invoke(packageName,InstallerType.RESTARTED)
+            }
+        }
+    }
+
+    fun register() {
+        val intentFilter = IntentFilter(Intent.ACTION_MEDIA_MOUNTED)
+        intentFilter.addAction(Intent.ACTION_PACKAGE_ADDED)
+        intentFilter.addAction(Intent.ACTION_PACKAGE_REMOVED)
+        intentFilter.addAction(Intent.ACTION_PACKAGE_REPLACED)
+        intentFilter.addAction(Intent.ACTION_PACKAGE_CHANGED)
+        intentFilter.addAction(Intent.ACTION_PACKAGE_RESTARTED)
+        intentFilter.addDataScheme("package")
+        context.registerReceiver(installListener, intentFilter)
+    }
+
+    fun unRegister() {
+        context.unregisterReceiver(installListener)
+    }
+}
+
+enum class InstallerType {
+    ADD,REMOVE,REPLACED,CHANGED,RESTARTED
 }
