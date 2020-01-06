@@ -20,3 +20,4 @@
 17. APK安装监听：http://blog.haoji.me/android-apk-install-listener.html?from=xa
 18. Android垃圾清理：https://blog.csdn.net/zhgxhuaa/article/details/33743293
 19. Android混淆机制：https://blog.csdn.net/ouyang_peng/article/details/73088090
+20. Android获取应用总大小：https://blog.csdn.net/LoveDou0816/article/details/77991752
