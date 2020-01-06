@@ -1,0 +1,78 @@
+
+    private fun getAllPackages() = mainScope.launch {
+        val packages = packageManager.getInstalledPackages(0)
+        appCount.value = 0
+        appAllCount.value = packages.size
+        withContext(Dispatchers.IO) {
+            val noSystemApps = mutableListOf<ProccessInfo>()
+            packages.forEach {
+                val info = it.applicationInfo
+                val name = info.loadLabel(packageManager).toString()
+                val packageName = info.packageName
+                val icon: Drawable = info.loadIcon(packageManager)
+                val versionName = it.versionName
+                val versionCode = it.versionCode
+                val isSystem: Boolean
+                if (info.flags.and(ApplicationInfo.FLAG_SYSTEM) == ApplicationInfo.FLAG_SYSTEM) {
+                    //系统应用
+                    isSystem = true
+                    Log.d("zyx", "isSystem:$isSystem")
+                } else {
+                    //非系统应用
+                    isSystem = false
+                    Log.d("zyx", "isSystem:$isSystem")
+                }
+                if (!isSystem) {
+                    val lastCount = appCount.value ?: 0
+                    withContext(Dispatchers.Main) {
+                        appCount.value = lastCount + 1
+                    }
+                    Log.d(
+                        "zyx", "info:$info," +
+                                "name:$name," +
+                                "packageName:$packageName," +
+                                "versionName:$versionName," +
+                                "versionCode:$versionCode," +
+                                "isSystem:$isSystem,"
+                    )
+                    noSystemApps.add(ProccessInfo(name, icon, packageName))
+                }
+            }
+            withContext(Dispatchers.Main) {
+                proccessInfos.clear()
+                proccessInfos.addAll(noSystemApps)
+                adapter.notifyDataSetChanged()
+            }
+        }
+    }
+    
+    
+    /**
+ * create by zyx on 2020-01-06
+ */
+class GarbageAdapter(layout: Int, dataList: MutableList<ProccessInfo>) :
+    BaseQuickAdapter<ProccessInfo, BaseViewHolder>(layout, dataList) {
+
+    override fun convert(helper: BaseViewHolder, item: ProccessInfo?) {
+        helper.setText(R.id.tv_garbage_item_name,item?.name)
+        helper.setImageDrawable(R.id.iv_garbage_item_icon,item?.icon)
+        helper.getView<Button>(R.id.btn_garbage_item_uninstall)
+            .setOnClickListener {
+                val uri = Uri.fromParts("package",item?.proccessName,null)
+                val intent= Intent(Intent.ACTION_DELETE,uri)
+                val context = it.context
+                when (context) {
+                    is Activity -> {
+                        context.startActivity(intent)
+                    }
+                    is Fragment -> {
+                        context.activity?.startActivity(intent)
+                    }
+                    else -> {
+                        PacfToastManager.showToast("context出了问题")
+                    }
+                }
+            }
+    }
+
+}
