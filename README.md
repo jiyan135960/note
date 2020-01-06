@@ -19,3 +19,4 @@
 16. Android工具类代码，非常齐全：https://github.com/Blankj/AndroidUtilCode
 17. APK安装监听：http://blog.haoji.me/android-apk-install-listener.html?from=xa
 18. Android垃圾清理：https://blog.csdn.net/zhgxhuaa/article/details/33743293
+19. Android混淆机制：https://blog.csdn.net/ouyang_peng/article/details/73088090
