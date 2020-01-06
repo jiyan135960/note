@@ -17,3 +17,4 @@
 14. Google源码在线查看：https://cs.android.com/
 15. AndPermission:https://github.com/yanzhenjie/AndPermission
 16. Android工具类代码，非常齐全：https://github.com/Blankj/AndroidUtilCode
+17. APK安装监听：http://blog.haoji.me/android-apk-install-listener.html?from=xa
