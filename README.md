@@ -5,7 +5,7 @@
 2. 谷歌代码实验室网址：https://codelabs.developers.google.com/
 3. 屏幕适配
 4. CC/ARouter
-5. RxBus
+5. RxBus:https://github.com/Blankj/RxBus
 6. CrashHandler
 7. Logger
 8. CommonTitleBar
