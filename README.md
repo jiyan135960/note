@@ -25,3 +25,4 @@
 22. Android沉浸式状态栏标题解决：https://blog.csdn.net/u014418171/article/details/81223681?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task
 23. Android ViewModel与LiveData结合：https://juejin.im/post/5dadd1c451882504006322d5
 24. Android ViewModel与Activity结合处理方法：https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150
+25. Android最新信息：https://medium.com/androiddevelopers
