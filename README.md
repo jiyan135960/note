@@ -23,3 +23,5 @@
 20. Android获取应用总大小：https://blog.csdn.net/LoveDou0816/article/details/77991752
 21. Android沉浸式状态栏：https://github.com/laobie/StatusBarUtil , https://github.com/gyf-dev/ImmersionBar
 22. Android沉浸式状态栏标题解决：https://blog.csdn.net/u014418171/article/details/81223681?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task
+23. Android ViewModel与LiveData结合：https://juejin.im/post/5dadd1c451882504006322d5
+24. Android ViewModel与Activity结合处理方法：https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150
