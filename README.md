@@ -26,3 +26,4 @@
 23. Android ViewModel与LiveData结合：https://juejin.im/post/5dadd1c451882504006322d5
 24. Android ViewModel与Activity结合处理方法：https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150
 25. Android最新信息：https://medium.com/androiddevelopers
+26. Android banner：https://github.com/zguop/banner
