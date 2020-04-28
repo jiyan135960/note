@@ -30,3 +30,4 @@
 27. Android https xml配置：https://developer.android.com/training/articles/security-config?hl=zh-cn
 28. 风景图片地址：http://www.2717.com/word/fengjingsheying/
 29. 嵌套滑动RecyclerView：https://github.com/JasonGaoH/NestedRecyclerView
+30. 视频框架：https://github.com/CarGuo/GSYVideoPlayer
