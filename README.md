@@ -31,3 +31,4 @@
 28. 风景图片地址：http://www.2717.com/word/fengjingsheying/
 29. 嵌套滑动RecyclerView：https://github.com/JasonGaoH/NestedRecyclerView
 30. 视频框架：https://github.com/CarGuo/GSYVideoPlayer
+31. 阿里云+GSY：https://github.com/CarGuo/GSYVideoPlayer/issues/1992
